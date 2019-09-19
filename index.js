@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', function (req, res)  {
- res.send('hello world!');
+ res.send('NodeJS App');
 });
 
 app.listen(process.env.PORT || 3000);
