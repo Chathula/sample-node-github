@@ -36,7 +36,7 @@ jobs:
       uses: appleboy/ssh-action@v0.0.2
       with:
         args: > 
-          --host ${{ secrets.NODE_SERVER }} --user ${{ secrets.SSH_USER }} --password ${{ secrets.SSH_PASSWORD }}
+          --host ${{ secrets.NODE_SERVER }} --user ${{ secrets.SSH_USER }} --ssh-key ${{ secrets.SSH_KEY }}
           --script 'cd ~/node-jenkins-test'
           --script 'git pull'
           --script 'npm install --production'
