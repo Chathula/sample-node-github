@@ -37,6 +37,4 @@ jobs:
       with:
         args: > 
           --host ${{ secrets.NODE_SERVER }} --user ${{ secrets.SSH_USER }} --ssh-key ${{ secrets.SSH_KEY }}
-          --script 'cd ~/node-jenkins-test'
-          --script 'git pull'
-  
+          --script 'whoami'  
