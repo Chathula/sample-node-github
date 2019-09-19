@@ -1,4 +1,4 @@
-name: Node CI
+name: Node Github CI
 
 on: 
   push:
@@ -26,3 +26,17 @@ jobs:
         npm test
       env:
         CI: true
+  
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH and deploy node app
+      uses: appleboy/ssh-action@v0.0.2
+      with: > 
+        --host ${{ secrets.NODE_SERVER }} --ssh-key ${{ secrets.SSH_KEY }}
+        --script 'cd ~/node-jenkins-test'
+        --script 'git pull'
+        --script 'npm install --production'
+        --script 'pm2 restart all'
