@@ -32,12 +32,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: SSH to deploy node server
-      uses: maddox/actions/ssh@master
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        HOST: ${{ secrets.HOST }}
-        USER: ${{ secrets.USER }}
+    - name: SSH and deploy node app
+      uses: appleboy/ssh-action@v0.0.2
       with:
-        args: whoami
+        args: > 
+          --host ${{ secrets.NODE_SERVER }} --user ${{ secrets.SSH_USER }} --password ${{ secrets.SSH_PASSWORD }}
+          --script 'cd ~/node-jenkins-test'
+          --script 'git pull'
+          --script 'npm install --production'
+          --script 'pm2 restart all'
   
