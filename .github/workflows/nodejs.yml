@@ -35,9 +35,9 @@ jobs:
     - name: SSH to deploy node server
       uses: maddox/actions/ssh@master
       env:
-        PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-        HOST: ${{ secrets.NODE_SERVER }}
-        USER: ${{ secrets.SSH_USER }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        HOST: ${{ secrets.HOST }}
+        USER: ${{ secrets.USER }}
       with:
         args: whoami
   
