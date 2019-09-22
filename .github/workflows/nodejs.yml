@@ -36,7 +36,7 @@ jobs:
       uses: appleboy/ssh-action@v0.0.2
       with:
         args: > 
-          --host ${{ secrets.SSH_HOST }} --user ${{ secrets.SSH_USER }} --ssh-key "${{ secrets.SSH_KEY }}"
+          --host ${{ secrets.SSH_HOST }} --user ${{ secrets.SSH_USER }} --ssh-key `${{ secrets.SSH_KEY }}`
           --script 'cd ~/sample-node-github'
           --script 'git pull'
           --script 'npm install --production'
