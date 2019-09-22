@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [8.10.0, 10.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -36,8 +36,8 @@ jobs:
       uses: appleboy/ssh-action@v0.0.2
       with:
         args: > 
-          --host ${{ secrets.NODE_SERVER }} --user ${{ secrets.SSH_USER }} --password ${{ secrets.SSH_PASSWORD }}
-          --script 'cd ~/node-jenkins-test'
+          --host ${{ secrets.SSH_HOST }} --user ${{ secrets.SSH_USER }} --ssh-key '${{ secrets.SSH_KEY }}'
+          --script 'cd ~/sample-node-github'
           --script 'git pull'
           --script 'npm install --production'
           --script 'pm2 restart all'
