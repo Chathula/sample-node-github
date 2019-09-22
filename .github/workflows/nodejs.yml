@@ -39,7 +39,7 @@ jobs:
       run: touch ~/ssh_key.txt && echo $SSH_KEY >> ~/ssh_key.txt
       with:
         args: > 
-          --host ${{ secrets.SSH_HOST }} --user ${{ secrets.SSH_USER }} --i ~/ssh_key.txt
+          --host ${{ secrets.SSH_HOST }} --user ${{ secrets.SSH_USER }} -i ~/ssh_key.txt
           --script 'cd ~/sample-node-github'
           --script 'git pull'
           --script 'npm install --production'
