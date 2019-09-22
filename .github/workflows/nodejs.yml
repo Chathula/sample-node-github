@@ -33,9 +33,9 @@ jobs:
 
     steps:      
     - name: SSH and deploy node app
-      uses: appleboy/ssh-action@v0.0.2
       env: 
-        SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+      uses: appleboy/ssh-action@v0.0.2
       run: touch ~/ssh_key.txt && echo $SSH_KEY >> ~/ssh_key.txt
       with:
         args: > 
