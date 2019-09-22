@@ -36,7 +36,9 @@ jobs:
       env: 
           SSH_KEY: ${{ secrets.SSH_KEY }}
       uses: appleboy/ssh-action@v0.0.2
-      run: touch ~/ssh_key.txt && echo $SSH_KEY >> ~/ssh_key.txt
+      run: |
+        touch ~/ssh_key.txt
+        echo $SSH_KEY >> ~/ssh_key.txt
       with:
         args: > 
           --host ${{ secrets.SSH_HOST }} --user ${{ secrets.SSH_USER }} -i ~/ssh_key.txt
